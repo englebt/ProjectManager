@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace ProjectManager.Models
 {
-    public class Employee
+    public class Project
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public virtual List<Employee> Employees { get; set; }
     }
 }
