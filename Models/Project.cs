@@ -24,6 +24,7 @@ namespace ProjectManager.Models
         public double ContractValue { get; set; } 
         public double FundingValue { get; set; }
 
+        public virtual List<Task> Tasks { get; set; }
         public virtual List<Employee> Employees { get; set; }
     }
 }
