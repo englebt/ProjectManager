@@ -27,15 +27,15 @@ namespace ProjectManager.Models
                 return; // Database already created
 
             Project[] projects = new Project[2];
-            Project proj1 = new Project() { Name = "Project 1"};
-            Project proj2 = new Project() { Name = "Project 2"};
+            Project proj1 = new Project() { Name = "Project 1", ContractValue = 1000000, FundingValue = 500000 };
+            Project proj2 = new Project() { Name = "Project 2", ContractValue = 1000000, FundingValue = 500000 };
             projects[0] = proj1;
             projects[1] = proj2;
 
-            Task p1t1 = new Task() { Name = "Proj1, Task 1"};
-            Task p1t2 = new Task() { Name = "Proj1, Task 2"};
-            Task p2t1 = new Task() { Name = "Proj2, Task 1" };
-            Task p2t2 = new Task() { Name = "Proj2, Task 2"};
+            Task p1t1 = new Task() { Name = "Proj1, Task 1", FundingValue = 250000 };
+            Task p1t2 = new Task() { Name = "Proj1, Task 2", FundingValue = 250000 };
+            Task p2t1 = new Task() { Name = "Proj2, Task 1", FundingValue = 250000 };
+            Task p2t2 = new Task() { Name = "Proj2, Task 2", FundingValue = 250000 };
             projects[0].Tasks.Add(p1t1);
             projects[0].Tasks.Add(p1t2);
             projects[1].Tasks.Add(p2t1);
