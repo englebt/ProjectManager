@@ -24,6 +24,8 @@ namespace ProjectManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PMContext>(opt => opt.UseInMemoryDatabase("FTIProjects"));
+            
+
 
             services.AddMvc();
         }
