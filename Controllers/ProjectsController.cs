@@ -43,9 +43,10 @@ namespace ProjectManager.Controllers
         }
 
         // GET: Projects/Create
-        public IActionResult Create()
+        public PartialViewResult Create()
         {
-            return View();
+            Project proj = new Project();
+            return PartialView("_Create", proj);
         }
 
         // POST: Projects/Create
@@ -53,7 +54,7 @@ namespace ProjectManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Project project)
+        public async Task<IActionResult> Create([Bind("Id,Name,StartDate")] Project project)
         {
             if (ModelState.IsValid)
             {
