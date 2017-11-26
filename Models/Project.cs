@@ -39,7 +39,7 @@ namespace ProjectManager.Models
 
         [Display(Name = "PM")]
         public virtual Employee Manager { get; set; }
-        public virtual List<Task> Tasks { get; set; }
+        public virtual List<TaskOrder> Tasks { get; set; }
         public virtual List<Employee> Employees { get; set; }
 
         public Project()
@@ -47,7 +47,7 @@ namespace ProjectManager.Models
             StartDate = DateTime.Today;
             Duration = 12;
             Manager = new Employee();
-            Tasks = new List<Task>();
+            Tasks = new List<TaskOrder>();
             Employees = new List<Employee>();
         }
     }

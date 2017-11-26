@@ -15,7 +15,7 @@ namespace ProjectManager.Models
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Task> Tasks{ get; set; }
+        public DbSet<TaskOrder> Tasks{ get; set; }
     }
 
     public static class DbInit
@@ -27,19 +27,27 @@ namespace ProjectManager.Models
                 return; // Database already created
 
             Project[] projects = new Project[2];
-            Project proj1 = new Project() { Name = "Project 1", ContractValue = 1000000, FundingValue = 500000 };
-            Project proj2 = new Project() { Name = "Project 2", ContractValue = 1000000, FundingValue = 500000 };
+            Project proj1 = new Project() { Name = "Project 1", ContractValue = 1000000, FundingValue = 500000, StartDate = DateTime.Today, Duration = 12 };
+            Project proj2 = new Project() { Name = "Project 2", ContractValue = 1000000, FundingValue = 500000, StartDate = DateTime.Today, Duration = 12 };
             projects[0] = proj1;
             projects[1] = proj2;
 
-            Task p1t1 = new Task() { Name = "Proj1, Task 1", FundingValue = 250000 };
-            Task p1t2 = new Task() { Name = "Proj1, Task 2", FundingValue = 250000 };
-            Task p2t1 = new Task() { Name = "Proj2, Task 1", FundingValue = 250000 };
-            Task p2t2 = new Task() { Name = "Proj2, Task 2", FundingValue = 250000 };
+            TaskOrder p1t1 = new TaskOrder() { Name = "Proj1, Task 1", FundingValue = 250000, StartDate = DateTime.Today, Duration = 12 };
+            TaskOrder p1t2 = new TaskOrder() { Name = "Proj1, Task 2", FundingValue = 250000, StartDate = DateTime.Today, Duration = 12 };
+            TaskOrder p2t1 = new TaskOrder() { Name = "Proj2, Task 1", FundingValue = 250000, StartDate = DateTime.Today, Duration = 12 };
+            TaskOrder p2t2 = new TaskOrder() { Name = "Proj2, Task 2", FundingValue = 250000, StartDate = DateTime.Today, Duration = 12 };
             projects[0].Tasks.Add(p1t1);
             projects[0].Tasks.Add(p1t2);
             projects[1].Tasks.Add(p2t1);
             projects[1].Tasks.Add(p2t2);
+
+            for(int m = 0; m < 12; m++)
+            {
+                p1t1.Months.Add(new Month() { AvailableHours = 160, AvailableFunding = 250000/12 });
+                p1t2.Months.Add(new Month() { AvailableHours = 160, AvailableFunding = 250000/12 });
+                p2t1.Months.Add(new Month() { AvailableHours = 160, AvailableFunding = 250000/12 });
+                p2t2.Months.Add(new Month() { AvailableHours = 160, AvailableFunding = 250000/12 });
+            }
 
             Employee emp1 = new Employee() { Name = "Employee 1"};
             Employee emp2 = new Employee() { Name = "Employee 2"};

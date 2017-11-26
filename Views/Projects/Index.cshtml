@@ -19,26 +19,31 @@
 
 <table class="table">
     <tbody>
-@foreach (var item in Model) {
+@foreach (var project in Model) {
         <tr>
             <td class="ctrl-col">
-                <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-fw fa-pencil"></i></a>
-                <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
+                <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@project.Id"><i class="fa fa-fw fa-pencil"></i></a>
+                <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@project.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
             </td>
             <td>
-                <a class="btn btn-xs btn-info btn-expand" type="button" data-target="#proj_@(item.Id)_tasks"><i class="fa fa-plus-square"></i></a>
-                <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                <a class="btn btn-xs btn-info btn-expand" type="button" data-target="#proj_@(project.Id)_tasks"><i class="fa fa-plus-square"></i></a>
+                <a asp-action="Details" asp-route-id="@project.Id">@Html.DisplayFor(modelItem => project.Name)</a>
             </td>
         </tr>
-        <tr class="collapse" role="tabpanel" id="proj_@(item.Id)_tasks">
+        <tr class="collapse" role="tabpanel" id="proj_@(project.Id)_tasks">
             <td colspan="2">
                 <table class="table">
                     <tbody>
-    @foreach (var task in item.Tasks) {
+    @foreach (var task in project.Tasks) {
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => task.Name)
                             </td>
+        @* @foreach(Month month in task.Months) {
+                            <td>
+                                @Html.DisplayFor(modelItem => task.Months.ElementAt(m).AvailableFunding)
+                            </td>
+        } *@
                         </tr>    
     }
                     </tbody>
