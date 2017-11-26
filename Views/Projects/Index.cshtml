@@ -26,7 +26,23 @@
                 <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
             </td>
             <td>
+                <a class="btn btn-xs btn-info btn-expand" type="button" data-target="#proj_@(item.Id)_tasks"><i class="fa fa-plus-square"></i></a>
                 <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+        </tr>
+        <tr class="collapse" role="tabpanel" id="proj_@(item.Id)_tasks">
+            <td colspan="2">
+                <table class="table">
+                    <tbody>
+    @foreach (var task in item.Tasks) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => task.Name)
+                            </td>
+                        </tr>    
+    }
+                    </tbody>
+                </table>
             </td>
         </tr>
 }
