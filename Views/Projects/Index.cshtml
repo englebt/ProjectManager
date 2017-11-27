@@ -19,7 +19,7 @@
 
 <table class="table">
     <tbody>
-@foreach (var project in Model) {
+        @foreach (var project in Model) {
         <tr>
             <td class="ctrl-col">
                 <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@project.Id"><i class="fa fa-fw fa-pencil"></i></a>
@@ -34,22 +34,22 @@
             <td colspan="2">
                 <table class="table">
                     <tbody>
-    @foreach (var task in project.Tasks) {
+                    @foreach (var task in project.Tasks) {
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => task.Name)
                             </td>
-        @* @foreach(Month month in task.Months) {
+                        @foreach (var month in task.Months) {
                             <td>
-                                @Html.DisplayFor(modelItem => task.Months.ElementAt(m).AvailableFunding)
+                                @Html.DisplayFor(modelItem => month.AvailableFunding)
                             </td>
-        } *@
+                        }
                         </tr>    
-    }
+                    }
                     </tbody>
                 </table>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

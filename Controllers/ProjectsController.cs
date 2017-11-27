@@ -22,7 +22,6 @@ namespace ProjectManager.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Projects.ToListAsync());
-            _context.Projects.ElementAt(0).Tasks.ElementAt(0).Months.Count();
         }
 
         // GET: Projects/Details/5
