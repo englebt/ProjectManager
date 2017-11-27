@@ -38,3 +38,7 @@
 .ctrl-col {
     width: 80px;
 }
+
+.num-col {
+    text-align: right;
+}

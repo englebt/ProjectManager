@@ -40,8 +40,9 @@
                                 @Html.DisplayFor(modelItem => task.Name)
                             </td>
                         @foreach (var month in task.Months) {
-                            <td>
-                                @Html.DisplayFor(modelItem => month.AvailableFunding)
+                            <td class="num-col">
+                                <p>@Html.DisplayFor(modelItem => month.AvailableFunding)</p>
+                                <p>@Html.DisplayFor(modelItem => month.AllocatedFunding)</p>
                             </td>
                         }
                         </tr>    
