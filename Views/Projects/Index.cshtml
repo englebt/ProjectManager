@@ -22,8 +22,8 @@
         @foreach (var project in Model) {
         <tr>
             <td class="ctrl-col">
-                <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@project.Id"><i class="fa fa-fw fa-pencil"></i></a>
-                <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@project.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
+                <a class="btn btn-primary btn-xs btn-edit-proj" asp-action="Edit" asp-route-id="@project.Id"><i class="fa fa-fw fa-pencil"></i></a>
+                <a class="btn btn-danger btn-xs btn-del-proj" asp-action="Delete" asp-route-id="@project.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
             </td>
             <td>
                 <a class="btn btn-xs btn-info btn-expand" type="button" data-target="#proj_@(project.Id)_tasks"><i class="fa fa-plus-square"></i></a>

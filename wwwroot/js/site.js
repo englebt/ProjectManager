@@ -1,17 +1,8 @@
-﻿$('#create-project').on('click', function(evt) {
-    evt.preventDefault();
+﻿$(document).on('click', '#create-project', function (evt) { return ShowModal($(this), evt); });
 
-    $.get({
-        url: $(this).attr('href')
-    }).done(function (result) {
-        $('#projects-modal').html(result);
-        $('#projects-modal').modal('show');
-    }).fail(function (xhr, status, error) {
-        console.log(error);
-    });
+$(document).on('click', '.btn-edit-proj', function (evt) { return ShowModal($(this), evt); });
 
-    return false;
-});
+$(document).on('click', '.btn-del-proj', function (evt) { return ShowModal($(this), evt); });
 
 $(document).on('click', '.btn-expand', function() {
     $(this).html('<i class="fa fa-minus-square"></i>'); 
@@ -23,3 +14,21 @@ $(document).on('click', '.btn-collapse', function() {
     $(this).removeClass("btn-collapse").addClass("btn-expand");
     $($(this).attr('data-target')).collapse('hide');
 });
+
+var ShowModal = function (btn, evt) {
+    evt.preventDefault();
+
+    $.get({
+        url: btn.attr('href')
+    }).done(function (result) {
+        if (result !== '')
+        {
+            $('#projects-modal').html(result);
+            $('#projects-modal').modal('show');
+        }
+    }).fail(function (xhr, status, error) {
+        console.log(error);
+    });
+
+    return false;
+};

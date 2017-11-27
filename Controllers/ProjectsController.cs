@@ -66,19 +66,18 @@ namespace ProjectManager.Controllers
         }
 
         // GET: Projects/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<PartialViewResult> Edit(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
+                var project = await _context.Projects
+                    .SingleOrDefaultAsync(m => m.Id == id);
+
+                if (project != null)
+                    return PartialView("_Edit", project);
             }
 
-            var project = await _context.Projects.SingleOrDefaultAsync(m => m.Id == id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-            return View(project);
+            return null;
         }
 
         // POST: Projects/Edit/5
@@ -117,21 +116,18 @@ namespace ProjectManager.Controllers
         }
 
         // GET: Projects/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<PartialViewResult> Delete(int? id)
         {
-            if (id == null)
+            if (id != null)
             {
-                return NotFound();
+                var project = await _context.Projects
+                    .SingleOrDefaultAsync(m => m.Id == id);
+
+                if(project != null)
+                    return PartialView("_Delete", project);
             }
 
-            var project = await _context.Projects
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            return View(project);
+            return null;
         }
 
         // POST: Projects/Delete/5
