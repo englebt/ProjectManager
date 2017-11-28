@@ -57,6 +57,10 @@ namespace ProjectManager.Models
             proj1.Manager = emp1;
             p1t1.Manager = emp1;
             p1t2.Manager = emp1;
+            emp1.Tasks.Add(p1t1);
+            emp1.Tasks.Add(p1t2);
+            emp2.Tasks.Add(p1t1);
+            emp2.Tasks.Add(p1t2);
             proj1.Employees.AddRange(new Employee[] { emp1, emp2 });
             proj1.Employees.AddRange(new Employee[] { emp1, emp2 });
             p1t1.Employees.AddRange(new Employee[] { emp1, emp2 });
@@ -65,6 +69,10 @@ namespace ProjectManager.Models
             proj2.Manager = emp4;
             p2t1.Manager = emp4;
             p2t2.Manager = emp4;
+            emp3.Tasks.Add(p2t1);
+            emp3.Tasks.Add(p2t2);
+            emp4.Tasks.Add(p2t1);
+            emp4.Tasks.Add(p2t2);
             proj2.Employees.AddRange(new Employee[] { emp1, emp2 });
             proj2.Employees.AddRange(new Employee[] { emp1, emp2 });
             p2t1.Employees.AddRange(new Employee[] { emp3, emp4 });

@@ -8,7 +8,10 @@ namespace ProjectManager.Models
         public string Name { get; set; }
         
         [Display(Name = "Available Hours")]
-        public int AvailableHours { get; set; }
+        public double AvailableHours { get; set; }
+
+        [Display(Name = "Allocated Hours")]
+        public double AllocatedHours { get;set;}
 
         [Display(Name = "Available Funding")]
         public double AvailableFunding { get; set; }

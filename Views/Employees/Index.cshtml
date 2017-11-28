@@ -19,7 +19,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var employee in Model) {
+        <tr>
+            <td class="ctrl-col">
+                <a class="btn btn-primary btn-xs btn-edit-emp" asp-action="Edit" asp-route-id="@employee.Id"><i class="fa fa-fw fa-pencil"></i></a>
+                <a class="btn btn-danger btn-xs btn-del-emp" asp-action="Delete" asp-route-id="@employee.Id"><i class="fa fa-fw fa-trash-o"></i></a>                
+            </td>
+            <td>
+                <a class="btn btn-xs btn-info btn-expand" type="button" data-target="#emp_@(employee.Id)_tasks"><i class="fa fa-plus-square"></i></a>
+                <a asp-action="Details" asp-route-id="@employee.Id">@Html.DisplayFor(modelItem => employee.Name)</a>
+            </td>
+        </tr>
+        <tr class="collapse" role="tabpanel" id="emp_@(employee.Id)_tasks">
+            <td colspan="2">
+                <table class="table">
+                    <tbody>
+                    @foreach (var task in employee.Tasks) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => task.Name)
+                            </td>
+                        @foreach (var month in task.Months) {
+                            <td class="num-col">
+                                <p>@Html.DisplayFor(modelItem => month.AvailableHours)</p>
+                                <p>@Html.DisplayFor(modelItem => month.AllocatedHours)</p>
+                            </td>
+                        }
+                        </tr>    
+                    }
+                    </tbody>
+                </table>
+            </td>
+        </tr>
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
